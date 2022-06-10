@@ -1,0 +1,10 @@
+{
+    "name": "Hide_Volume_Hide_Plane",
+    "version_number": "1.0.0",
+    "website_url": "",
+    "description": "Hide Plane automatically hides hide volumes ",
+    "dependencies":
+	[
+        "PluginMasters-Custom_Assets_Library_Plugin-1.1.0"
+    ]
+}

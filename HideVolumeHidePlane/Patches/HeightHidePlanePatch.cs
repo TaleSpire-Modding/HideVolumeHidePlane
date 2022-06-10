@@ -1,0 +1,50 @@
+﻿using Bounce.ManagedCollections;
+using HarmonyLib;
+using System.Threading.Tasks;
+
+namespace HideVolumeHidePlane.Patches
+{
+    [HarmonyPatch(typeof(HideVolumeManager), "OnShowHideVolumesChange")]
+    internal class HVMPatch
+    {
+        internal static BList<HideVolumeItem> _hideVolumeItems;
+
+        internal static bool IsActive;
+
+        static void Postfix(ref bool visibility, ref BList<HideVolumeItem> ____hideVolumeItems)
+        {
+            _hideVolumeItems = ____hideVolumeItems;
+            IsActive = visibility;
+
+            Hider.HideVolumes();
+        }
+
+    }
+
+    [HarmonyPatch(typeof(HeightHidePlane), "Update")]
+    internal class HeightHidePlanePatch
+    {
+        internal static float lastHeight;
+
+        static void Postfix(ref float ____currentHeight)
+        {
+            if (____currentHeight == lastHeight) return;
+            lastHeight = ____currentHeight;
+            
+            Hider.HideVolumes();
+        }
+
+    }
+    
+    internal static class Hider
+    {
+        public static void HideVolumes() =>
+            Parallel.ForEach(HVMPatch._hideVolumeItems ?? new BList<HideVolumeItem>(), hv =>
+            {
+                var b = hv.HideVolume.Bounds;
+                var cutoff = b.size.y / 2 + b.center.y;
+
+                hv.VisibilityChange(HVMPatch.IsActive && cutoff < HeightHidePlanePatch.lastHeight);
+            });
+    }
+}
