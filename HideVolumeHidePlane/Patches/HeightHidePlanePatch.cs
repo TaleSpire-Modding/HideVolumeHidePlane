@@ -1,6 +1,5 @@
 ﻿using Bounce.ManagedCollections;
 using HarmonyLib;
-using System.Threading.Tasks;
 
 namespace HideVolumeHidePlane.Patches
 {
@@ -38,13 +37,15 @@ namespace HideVolumeHidePlane.Patches
     
     internal static class Hider
     {
-        public static void HideVolumes() =>
-            Parallel.ForEach(HVMPatch._hideVolumeItems ?? new BList<HideVolumeItem>(), hv =>
+        public static void HideVolumes()
+        {
+            foreach (var hv in HVMPatch._hideVolumeItems ?? new BList<HideVolumeItem>())
             {
                 var b = hv.HideVolume.Bounds;
                 var cutoff = b.size.y / 2 + b.center.y;
 
                 hv.VisibilityChange(HVMPatch.IsActive && cutoff < HeightHidePlanePatch.lastHeight);
-            });
+            }
+        }
     }
 }
