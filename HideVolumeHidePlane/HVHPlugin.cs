@@ -14,7 +14,6 @@ namespace HideVolumeHidePlane
         All,
     }
 
-
     [BepInPlugin(Guid, Name, Version)]
     public class HVHPlugin : BaseUnityPlugin
     {

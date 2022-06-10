@@ -32,7 +32,6 @@ namespace HideVolumeHidePlane.Patches
             
             Hider.HideVolumes();
         }
-
     }
     
     internal static class Hider
