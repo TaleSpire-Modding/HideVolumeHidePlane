@@ -2,6 +2,7 @@
 using BepInEx.Configuration;
 using HarmonyLib;
 using UnityEngine;
+using PluginUtilities;
 
 namespace HideVolumeHidePlane
 {
@@ -15,11 +16,12 @@ namespace HideVolumeHidePlane
     }
 
     [BepInPlugin(Guid, Name, Version)]
+    [BepInDependency(SetInjectionFlag.Guid)]
     public class HVHPlugin : BaseUnityPlugin
     {
         // constants
         public const string Guid = "org.HF.plugins.HVHP";
-        public const string Version = "1.0.2.0";
+        public const string Version = "1.0.3.0";
         private const string Name = "HolloFoxes' Hide Plane for Hide Volumes";
 
         internal static ConfigEntry<LogLevel> LogLevel { get; set; }
