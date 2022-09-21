@@ -4,7 +4,7 @@ using HarmonyLib;
 namespace HideVolumeHidePlane.Patches
 {
     [HarmonyPatch(typeof(HideVolumeManager), "OnShowHideVolumesChange")]
-    internal class HVMPatch
+    internal sealed class HVMPatch
     {
         internal static BList<HideVolumeItem> _hideVolumeItems;
 
@@ -21,7 +21,7 @@ namespace HideVolumeHidePlane.Patches
     }
 
     [HarmonyPatch(typeof(HeightHidePlane), "Update")]
-    internal class HeightHidePlanePatch
+    internal sealed class HeightHidePlanePatch
     {
         internal static float lastHeight;
 

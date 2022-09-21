@@ -1,57 +1,54 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using HarmonyLib;
+using ModdingTales;
 using UnityEngine;
 using PluginUtilities;
+using BepInEx.Logging;
 
 namespace HideVolumeHidePlane
 {
-    public enum LogLevel
-    {
-        None,
-        Low,
-        Medium,
-        High,
-        All,
-    }
-
     [BepInPlugin(Guid, Name, Version)]
     [BepInDependency(SetInjectionFlag.Guid)]
-    public class HVHPlugin : BaseUnityPlugin
+    public sealed class HVHPlugin : BaseUnityPlugin
     {
         // constants
         public const string Guid = "org.HF.plugins.HVHP";
-        public const string Version = "1.0.3.0";
-        private const string Name = "HolloFoxes' Hide Plane for Hide Volumes";
+        public const string Version = "1.0.4.0";
+        private const string Name = "Hide Plane for Hide Volumes";
 
-        internal static ConfigEntry<LogLevel> LogLevel { get; set; }
+        internal static ConfigEntry<ModdingUtils.LogLevel> _logLevel { get; set; }
         internal static Harmony harmony;
+
+        internal static ModdingUtils.LogLevel LogLevel => _logLevel.Value == ModdingUtils.LogLevel.Inherited ? ModdingUtils.LogLevelConfig.Value : _logLevel.Value;
+        internal static ManualLogSource _logger;
 
         public static void DoPatching()
         {
             harmony = new Harmony(Guid);
             harmony.PatchAll();
-            if (LogLevel.Value > HideVolumeHidePlane.LogLevel.None) Debug.Log($"{Name}: Patched.");
+            if (LogLevel > ModdingUtils.LogLevel.None) _logger.LogInfo($"{Name}: Patched.");
         }
 
         public static void UnPatch()
         {
             harmony.UnpatchSelf();
-            if (LogLevel.Value > HideVolumeHidePlane.LogLevel.None) Debug.Log($"{Name}: UnPatched.");
+            if (LogLevel> ModdingUtils.LogLevel.None) _logger.LogInfo($"{Name}: UnPatched.");
         }
 
         public static void DoConfig(ConfigFile Config)
         {
-            LogLevel = Config.Bind("Logging", "Level", HideVolumeHidePlane.LogLevel.Low);
-            if (LogLevel.Value > HideVolumeHidePlane.LogLevel.None) Debug.Log($"{Name}: Config Bound.");
+            _logLevel = Config.Bind("Logging", "Level", ModdingUtils.LogLevel.Low);
+            if (LogLevel > ModdingUtils.LogLevel.None) _logger.LogInfo($"{Name}: Config Bound.");
         }
 
         private void Awake()
         {
+            _logger = Logger;
             DoConfig(Config);
             DoPatching();
-            if (LogLevel.Value > HideVolumeHidePlane.LogLevel.None) Debug.Log($"{Name} is Active.");
-            ModdingTales.ModdingUtils.Initialize(this, Logger);
+            if (LogLevel > ModdingUtils.LogLevel.None) _logger.LogInfo($"{Name} is Active.");
+            ModdingUtils.Initialize(this, Logger, "HolloFoxes'");
         }
     }
 }
