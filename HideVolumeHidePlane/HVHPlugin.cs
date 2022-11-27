@@ -14,7 +14,7 @@ namespace HideVolumeHidePlane
     {
         // constants
         public const string Guid = "org.HF.plugins.HVHP";
-        public const string Version = "1.0.4.0";
+        public const string Version = "0.0.0.0";
         private const string Name = "Hide Plane for Hide Volumes";
 
         internal static ConfigEntry<ModdingUtils.LogLevel> _logLevel { get; set; }
