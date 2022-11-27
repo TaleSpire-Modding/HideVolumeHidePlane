@@ -1,4 +1,6 @@
 ## Hide Volume Hide Plane
+[![Nuget Published](https://github.com/TaleSpire-Modding/HideVolumeHidePlane/actions/workflows/release.yml/badge.svg)](https://github.com/TaleSpire-Modding/HideVolumeHidePlane/actions/workflows/release.yml)
+
 Hide volumes have the tendency to block view/usage of other hidevolumes whilst using TaleSpire. This plugin helps GMs to gain better access to HideVolumes that would otherwise be blocked by higher hide volumes.
 
 ## Installing With R2ModMan
