@@ -11,6 +11,7 @@ The Hideplane that's used to hide tiles and prop now automatically adjusts the v
 
 ## Changelog
 ```
+- 1.1.1: logger update
 - 1.1.0: net48 upgrade
 - 1.0.4: Compiler optimization
 - 1.0.3: Fix util
