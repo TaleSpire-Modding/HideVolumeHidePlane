@@ -23,7 +23,7 @@ The Hideplane that's used to hide tiles and prop now automatically adjusts the v
 ## Shoutouts
 <!-- CONTRIBUTORS-START -->
 Shoutout to my past [Patreons](https://www.patreon.com/HolloFox), recognising your mighty support and contribution to my caffeine addiction:
-- [Demongund](https://www.twitch.tv/demongund)
-- [Tales Tavern](https://talestavern.com/) - MadWizard
+- [Demongund](https://www.twitch.tv/demongund) - Introduced me to TaleSpire
+- [Tales Tavern/MadWizard](https://talestavern.com/)
 - Joaqim Planstedt
 <!-- CONTRIBUTORS-END -->
