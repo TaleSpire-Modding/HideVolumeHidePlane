@@ -21,8 +21,10 @@ The Hideplane that's used to hide tiles and prop now automatically adjusts the v
 - 1.0.0: Initial release, Published on ThunderStore
 ```
 
-Shoutout to my Patreons on https://www.patreon.com/HolloFox recognising your
-mighty contribution to my caffeine addiction:
-- John Fuller
-- [Tales Tavern](https://talestavern.com/) - MadWizard
+## Shoutouts
+<!-- CONTRIBUTORS-START -->
+Shoutout to my past [Patreons](https://www.patreon.com/HolloFox) and [Discord](https://discord.gg/up6sWSjr) members, recognising your mighty support and contribution to my caffeine addiction:
+- [Demongund](https://www.twitch.tv/demongund) - Introduced me to TaleSpire
+- [Tales Tavern/MadWizard](https://talestavern.com/)
 - Joaqim Planstedt
+<!-- CONTRIBUTORS-END -->
