@@ -1,11 +1,11 @@
 {
     "name": "Hide_Volume_Hide_Plane",
-    "version_number": "1.1.2",
+    "version_number": "1.1.3",
     "website_url": "https://github.com/TaleSpire-Modding/HideVolumeHidePlane",
     "description": "Hide Plane automatically hides hide volumes",
     "dependencies":
 	[
-		"bbepisTaleSpire-BepInExPack-5.4.10",
-		"brcoding-SetInjectionFlagPlugin-3.0.0"
+		"bbepisTaleSpire-BepInExPack-5.4.22",
+		"brcoding-SetInjectionFlagPlugin-3.3.4"
 	]
 }

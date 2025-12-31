@@ -1,14 +1,13 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using ModdingTales;
 using PluginUtilities;
-using BepInEx.Logging;
+using HideVolumeHidePlane.Patches;
 
 namespace HideVolumeHidePlane
 {
     [BepInPlugin(Guid, Name, Version)]
     [BepInDependency(SetInjectionFlag.Guid)]
-    public sealed class HVHPlugin : BaseUnityPlugin
+    public sealed class HVHPlugin : DependencyUnityPlugin
     {
         // constants
         public const string Guid = "org.HF.plugins.HVHP";
@@ -17,27 +16,26 @@ namespace HideVolumeHidePlane
 
         internal static Harmony harmony;
 
-        internal static ManualLogSource _logger;
-
-        public static void DoPatching()
+        /// <summary>
+        /// Awake plugin
+        /// </summary>
+        protected override void OnAwake()
         {
             harmony = new Harmony(Guid);
             harmony.PatchAll();
-            _logger.LogInfo($"{Name}: Patched.");
+            Logger.LogDebug($"{Name} is Active.");
         }
 
-        public static void UnPatch()
+        protected override void OnDestroyed()
         {
+            // restore volumes
+            Hider.UnHideVolumes();
+            HVMPatch._hideVolumeItems.Clear();
+            
+            // unpatch
             harmony.UnpatchSelf();
-            _logger.LogInfo($"{Name}: UnPatched.");
-        }
 
-        private void Awake()
-        {
-            _logger = Logger;
-            DoPatching();
-            _logger.LogInfo($"{Name} is Active.");
-            ModdingUtils.AddPluginToMenuList(this, "HolloFoxes'");
+            Logger.LogDebug($"{Name} is unpatched.");
         }
     }
 }

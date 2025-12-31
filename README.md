@@ -11,6 +11,7 @@ The Hideplane that's used to hide tiles and prop now automatically adjusts the v
 
 ## Changelog
 ```
+- 1.1.3: DependencyUnityPlugins is now used and implements logic for unpatching
 - 1.1.2: Pipeline Update
 - 1.1.1: logger update
 - 1.1.0: net48 upgrade

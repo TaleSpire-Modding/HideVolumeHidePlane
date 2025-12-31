@@ -46,5 +46,13 @@ namespace HideVolumeHidePlane.Patches
                 hv.VisibilityChange(HVMPatch.IsActive && cutoff < HeightHidePlanePatch.lastHeight);
             }
         }
+
+        public static void UnHideVolumes()
+        {
+            foreach (var hv in HVMPatch._hideVolumeItems ?? new BList<HideVolumeItem>())
+            {
+                hv.VisibilityChange(HVMPatch.IsActive);
+            }
+        }
     }
 }
