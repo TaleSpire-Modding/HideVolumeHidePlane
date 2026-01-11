@@ -7,7 +7,7 @@ namespace HideVolumeHidePlane
 {
     [BepInPlugin(Guid, Name, Version)]
     [BepInDependency(SetInjectionFlag.Guid)]
-    public sealed class HVHPlugin : DependencyUnityPlugin
+    public sealed class HVHPlugin : DependencyUnityPlugin<HVHPlugin>
     {
         // constants
         public const string Guid = "org.HF.plugins.HVHP";
@@ -30,10 +30,10 @@ namespace HideVolumeHidePlane
         {
             // restore volumes
             Hider.UnHideVolumes();
-            HVMPatch._hideVolumeItems.Clear();
+            HVMPatch._hideVolumeItems?.Clear();
             
             // unpatch
-            harmony.UnpatchSelf();
+            harmony?.UnpatchSelf();
 
             Logger.LogDebug($"{Name} is unpatched.");
         }
