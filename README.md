@@ -1,3 +1,6 @@
+## Deprecated
+As of [Devlog 507](https://bouncyrock.com/news/articles/talespire-dev-log-507), this mod will be deprecated on the official feature release within TaleSpire.
+
 ## Hide Volume Hide Plane
 [![Nuget Published](https://github.com/TaleSpire-Modding/HideVolumeHidePlane/actions/workflows/release.yml/badge.svg)](https://github.com/TaleSpire-Modding/HideVolumeHidePlane/actions/workflows/release.yml)
 
